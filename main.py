@@ -74,7 +74,7 @@ def main():
         print(command)
 
         # Check if repeat
-        if sequence != "00":
+        if sequence == "00":
 
             # Switch based on Keypressed
 
