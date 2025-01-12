@@ -3,8 +3,8 @@ Description= program to play random audio clips
 
 [Service]
 WorkingDirectory= /home/pi/gex_phrases
-ExecStart= python3 "main.py"
-Type = exec
+User = pi
+ExecStart=python3 "main.py"
 
 Restart=always
 StandardOutput=file:/home/pi/gex_phrases.log
