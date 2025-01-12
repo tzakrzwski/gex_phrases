@@ -65,6 +65,8 @@ def main():
     # Check if input avaiblible from remote
     if conn.has_data():
 
+        print("Has Data")
+
         # Read the keypress
         keypress = conn.readline(0)
         
