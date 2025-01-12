@@ -62,56 +62,51 @@ def play_random_clip():
 
 def main():
 
-    # Check if input avaiblible from remote
-    if conn.has_data():
+    # Read the keypress
+    keypress = conn.readline(0)
+    
+    if keypress != None:
 
-        print("Has Data")
+        data = keypress.split()
+        sequence = data[1]
+        command = data[2]
 
-        # Read the keypress
-        keypress = conn.readline(0)
-        
-        if keypress != None:
+        print(command)
 
-            data = keypress.split()
-            sequence = data[1]
-            command = data[2]
+        # Check if repeat
+        if sequence != "00":
 
-            print(command)
+            # Switch based on Keypressed
 
-            # Check if repeat
-            if sequence != "00":
+            if command == "KEY_MENU":
+                # Poweroff pi
+                tts("Powering off Gex. You can unplug me after the green light stops blinking.")
+                subprocess.call("sudo poweroff", shell=True)
 
-                # Switch based on Keypressed
+            elif command == "KEY_MUTE":
+                # Disable output
+                tts("Gex is disabled.")
+                clip_frequency = 0
 
-                if command == "KEY_MENU":
-                    # Poweroff pi
-                    tts("Powering off Gex. You can unplug me after the green light stops blinking.")
-                    subprocess.call("sudo poweroff", shell=True)
+            elif command == "KEY_RIGHT":
+                # Random Mode
+                tts("Gex will give out quotes randomly.")
+                random_mode = True
 
-                elif command == "KEY_MUTE":
-                    # Disable output
-                    tts("Gex is disabled.")
-                    clip_frequency = 0
+            elif command == "KEY_LEFT":
+                # Sceduled Mode
+                tts("Gex will give out quotes periodicly.")
+                random_mode = False
 
-                elif command == "KEY_RIGHT":
-                    # Random Mode
-                    tts("Gex will give out quotes randomly.")
-                    random_mode = True
-
-                elif command == "KEY_LEFT":
-                    # Sceduled Mode
-                    tts("Gex will give out quotes periodicly.")
-                    random_mode = False
-
-                elif command == "KEY_ENTER":
-                    # Play a clip
-                    play_random_clip()
+            elif command == "KEY_ENTER":
+                # Play a clip
+                play_random_clip()
 
 
 
 
 
-tts("Gex Speaker is Live.")
+tts("Gex Speaker is online.")
 tts("Please select a number to activate")
 
 while True:         
