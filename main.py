@@ -74,6 +74,8 @@ def main():
             sequence = data[1]
             command = data[2]
 
+            print(command)
+
             # Check if repeat
             if sequence != "00":
 
