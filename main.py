@@ -19,7 +19,7 @@ CLIP_DIRECTORY = "/home/pi/gex_clips/"
 
 CLIP_GAIN = 5
 
-UPDATE_INTERVAL = 30 # Seconds between checks for playing clip
+UPDATE_INTERVAL = 5 # Seconds between checks for playing clip
 
 tts_engine = pyttsx3.init()
 tts_engine.setProperty('rate', SPEECH_RATE)
