@@ -10,6 +10,7 @@ import asyncio
 import pyttsx3
 import subprocess
 import random
+import time
 
 SPEECH_RATE = 170 # Words Per Minute
 TTS_VOLUME = 5 # Supposed to cap at 1?
@@ -18,14 +19,18 @@ CLIP_DIRECTORY = "/home/pi/gex_clips/"
 
 CLIP_GAIN = 5
 
+UPDATE_INTERVAL = 30 # Seconds between checks for playing clip
+
 tts_engine = pyttsx3.init()
 tts_engine.setProperty('rate', SPEECH_RATE)
 tts_engine.setProperty('volume', TTS_VOLUME)
 
 conn = RawConnection()
 
-clip_frequency = 0 # How often to play a clip
+clip_interval = 0 # Seconds between clips
 random_mode = False # Detemine if jokes are random or happen on schedule
+last_clip_update = time.time() # Last time since update for the clip play
+last_clip_played = time.time() # Last time clip was played
 
 
 def tts(text):
@@ -52,11 +57,12 @@ def play_random_clip():
         # Play the clip
         _play_clip(f_path)
 
-        return
+        return 1
 
 
     except:
         tts("Unable to Play File")
+        return 0
 
 
 
@@ -86,7 +92,7 @@ def main():
             elif command == "KEY_MUTE":
                 # Disable output
                 tts("Gex is disabled.")
-                clip_frequency = 0
+                clip_interval = 0
 
             elif command == "KEY_RIGHT":
                 # Random Mode
@@ -101,6 +107,84 @@ def main():
             elif command == "KEY_ENTER":
                 # Play a clip
                 play_random_clip()
+                last_clip_played = time.time()
+
+            elif command == "KEY_1":
+                # Minute
+                tts("Gex is set to one clip per minute.")
+                clip_interval = 60
+            
+            elif command == "KEY_2":
+                # 5 Minute
+                tts("Gex is set to one clip every five minutes.")
+                clip_interval = 60*5
+
+            elif command == "KEY_3":
+                # 10 Minute
+                tts("Gex is set to one clip every ten minutes.")
+                clip_interval = 60*10
+
+            elif command == "KEY_4":
+                # 15 Minute
+                tts("Gex is set to one clip every fifteen minutes.")
+                clip_interval = 60*15
+
+            elif command == "KEY_5":
+                # 20 Minute
+                tts("Gex is set to one clip every twenty minutes.")
+                clip_interval = 60*20
+            
+            elif command == "KEY_6":
+                # 30 Minute
+                tts("Gex is set to one clip every half hour.")
+                clip_interval = 60*30
+
+            elif command == "KEY_7":
+                # 45 Minute
+                tts("Gex is set to one clip every fourty five minutes.")
+                clip_interval = 60*45
+            
+            elif command == "KEY_8":
+                # 60 Minute
+                tts("Gex is set to one clip every hour.")
+                clip_interval = 60*60
+            
+            elif command == "KEY_9":
+                # 120 Minute
+                tts("Gex is set to one clip every two hours.")
+                clip_interval = 60*120
+
+            elif command == "KEY_0":
+                # 120 Minute
+                tts("Gex is set to one clip every day.")
+                clip_interval = 60*60*24
+            
+
+
+    # Check if muted
+    if clip_interval == 0:
+        return
+
+    # Check if a update interval has passed
+    if time.time() - last_clip_update > UPDATE_INTERVAL:
+
+        if random_mode:
+
+            # If random, calculate probality based on clip_interval, then roll the dice
+            rand_threshold = UPDATE_INTERVAL / clip_interval
+
+            if random.random() < rand_threshold:
+                play_random_clip()
+                last_clip_played = time.time()
+        
+        else:
+
+            # If schecudled, then see if due for another clip to play
+            if time.time() - last_clip_played > clip_interval:
+                play_random_clip()
+                last_clip_played = time.time()
+
+
 
 
 
