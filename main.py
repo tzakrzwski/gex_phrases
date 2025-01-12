@@ -3,7 +3,7 @@ Load audio files from specficed directory and play them at random times
 
 '''
 
-from lirc import RawConnection, AsyncConnection
+from lirc import RawConnection
 from os import listdir
 from os.path import isfile, join
 import asyncio
