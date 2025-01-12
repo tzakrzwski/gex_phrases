@@ -68,6 +68,8 @@ def play_random_clip():
 
 def main():
 
+    global clip_interval, random_mode, last_clip_update, last_clip_played
+
     # Read the keypress
     keypress = conn.readline(0)
     
@@ -167,6 +169,8 @@ def main():
 
     # Check if a update interval has passed
     if time.time() - last_clip_update > UPDATE_INTERVAL:
+
+        last_clip_update = time.time()
 
         if random_mode:
 
