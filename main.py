@@ -127,12 +127,12 @@ def main():
 
             elif command == "KEY_RIGHT":
                 # Random Mode
-                tts(clip_name_list[clip_name_list] + " will give out quotes randomly.")
+                tts(clip_name_list[clip_index] + " will give out quotes randomly.")
                 random_mode = True
 
             elif command == "KEY_LEFT":
                 # Sceduled Mode
-                tts(clip_name_list[clip_name_list] + " will give out quotes periodicly.")
+                tts(clip_name_list[clip_index] + " will give out quotes periodicly.")
                 random_mode = False
 
             elif command == "KEY_UP":
@@ -162,52 +162,52 @@ def main():
 
             elif command == "KEY_1":
                 # Minute
-                tts(clip_name_list[clip_name_list] + " is set to one clip per minute.")
+                tts(clip_name_list[clip_index] + " is set to one clip per minute.")
                 play_interval = 60
             
             elif command == "KEY_2":
                 # 5 Minute
-                tts(clip_name_list[clip_name_list] + " is set to one clip every five minutes.")
+                tts(clip_name_list[clip_index] + " is set to one clip every five minutes.")
                 play_interval = 60*5
 
             elif command == "KEY_3":
                 # 10 Minute
-                tts(clip_name_list[clip_name_list] + " is set to one clip every ten minutes.")
+                tts(clip_name_list[clip_index] + " is set to one clip every ten minutes.")
                 play_interval = 60*10
 
             elif command == "KEY_4":
                 # 15 Minute
-                tts(clip_name_list[clip_name_list] + " is set to one clip every fifteen minutes.")
+                tts(clip_name_list[clip_index] + " is set to one clip every fifteen minutes.")
                 play_interval = 60*15
 
             elif command == "KEY_5":
                 # 30 Minute
-                tts(clip_name_list[clip_name_list] + " is set to one clip every half hour.")
+                tts(clip_name_list[clip_index] + " is set to one clip every half hour.")
                 play_interval = 60*30
             
             elif command == "KEY_6":
                 # 60 Minutes
-                tts(clip_name_list[clip_name_list] + " is set to one clip every hour.")
+                tts(clip_name_list[clip_index] + " is set to one clip every hour.")
                 play_interval = 60*60
 
             elif command == "KEY_7":
                 # 120 Minute
-                tts(clip_name_list[clip_name_list] + " is set to one clip every two hours.")
+                tts(clip_name_list[clip_index] + " is set to one clip every two hours.")
                 play_interval = 60*120
             
             elif command == "KEY_8":
                 # 6 hours
-                tts(clip_name_list[clip_name_list] + " is set to one clip every six hours.")
+                tts(clip_name_list[clip_index] + " is set to one clip every six hours.")
                 play_interval = 60*60*6
             
             elif command == "KEY_9":
                 # 12 hours
-                tts(clip_name_list[clip_name_list] + " is set to one clip every twelve hours.")
+                tts(clip_name_list[clip_index] + " is set to one clip every twelve hours.")
                 play_interval = 60*60*12
 
             elif command == "KEY_0":
                 # 24 hours
-                tts(clip_name_list[clip_name_list] + " is set to one clip every day.")
+                tts(clip_name_list[clip_index] + " is set to one clip every day.")
                 play_interval = 60*60*24
 
 
