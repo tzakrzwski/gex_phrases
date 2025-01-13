@@ -143,7 +143,7 @@ def main():
 
                 # If intro clip is not avaiable, then use tts
                 if clip_intro_list[clip_index] == None or not play_specfic_clip(clip_intro_list[clip_index]):
-                    tts("Speaker is set to " + clip_name_list[clip_name_list] + ".")
+                    tts("Speaker is set to " + clip_name_list[clip_index] + ".")
 
             elif command == "KEY_DOWN":
                 # Decrease speaker index
@@ -153,7 +153,7 @@ def main():
 
                 # If intro clip is not avaiable, then use tts
                 if clip_intro_list[clip_index] == None or not play_specfic_clip(clip_intro_list[clip_index]):
-                    tts("Speaker is set to " + clip_name_list[clip_name_list] + ".")
+                    tts("Speaker is set to " + clip_name_list[clip_index] + ".")
 
             elif command == "KEY_ENTER":
                 # Play a clip
