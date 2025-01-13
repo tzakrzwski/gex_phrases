@@ -36,7 +36,7 @@ last_clip_played = time.time() # Last time clip was played
 clip_directory_list = ["/home/pi/gex_clips/", "/home/pi/dunkey_clips/"] # Locations to pull clips from
 clip_intro_list = ["/home/pi/gex_clips/Heeeeerrrrreee_ssss_GEXY!.wav", "/home/pi/dunkey_clips/heyalexitsreggie.wav", None] # Clip to play when changing clip speaker
 clip_name_list = ["Gex", "Dunky", "Random"] # Names of the clip speakers
-clip_index = len(clip_directory_list) # Index of clip type; If greater than size of clip_directory_list, then random speaker
+
 
 
 def tts(text):
@@ -97,7 +97,7 @@ def get_speaker_directory(c_ind):
 
 def main():
 
-    global play_interval, random_mode, last_clip_update, last_clip_played
+    global play_interval, random_mode, last_clip_update, last_clip_played, clip_index
 
     # Read the keypress
     keypress = conn.readline(0)
